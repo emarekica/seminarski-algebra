@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdn.scaledrone.com/scaledrone.min.js">
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wall-chat.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+
+    <title>Wall writings</title>
+  </head>
+
+  <body>
+    <h1>Wall writings</h1>
+
+    <div class="members"></div>
+    <div class="messages"></div>
+
+    <form class="message-form">
+
+      <input
+        class="message-form__input"
+        id="input-field"
+        placeholder="Write something..."
+        type="text" />
+
+      <button
+        class="message-form__submit"
+        id="send-button"
+        type="submit">
+        <img
+          src="./design/brush strokes/png/brushstroke-1b.png" 
+          alt="White wall with wide gray brush strokes"
+          id="brushstroke" />
+      </button>
+
+    </form>
+
+    <script src="wall-chat.js"></script>
+  </body>
+</html>
