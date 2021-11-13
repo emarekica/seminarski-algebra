@@ -157,14 +157,27 @@ function createMessageElement(text, member) {
 
 function addMessageToListDOM(text, member) {
   const el = DOM.messages;
-  const wasTop = el.scrollTop === el.scrollHeight
+  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+  el.appendChild(createMemberElement(text, member));
+
+  if(wasTop) {
+    el.scrollTop = el.scrollHeight - el. clientHeight;
+  }
 }
 
-// function addMessageToListDOM(text, member) {
-//   const el = DOM.messages;
-//   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
-//   el.appendChild(createMessageElement(text, member));
-//   if (wasTop) {
-//     el.scrollTop = el.scrollHeight - el.clientHeight;
-//   }
-//  }
+// event listener on Send button
+DOM.form.addEventListener("subit", sendMessage);
+
+function sendMessage() {
+  const value = DOM.input.value;
+  
+  if(value === "") {
+    return;
+  }
+
+  DOM.input.value = "";
+  drone.publish({
+    room: "observable-room",
+    message: value,
+  });
+}

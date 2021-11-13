@@ -66,6 +66,28 @@ Can be set to any integer value, with certain caveats:
   - if set to a value greater than the maximum available for the element, `scrollTop` settles itself to the maximum value
 ___
 
+## element.clientHeight
+
+-- read-only property
+-- zero for elements with no CSS or inline layout boxes
+-- otherwise, it's the inner height of an element in pixels
+-- includes padding but excludes borders, margins, and horizontal scrollbars (if present)
+
+**calculated as:**
+
+CSS height + CSS padding - height of horizontal scrollbar (if present)
+
+[img example](https://www.pinterest.com/pin/475340935679590950/)
+
+___
+
+## element.scrollHeigh()
+
+-- read-only property is a measurement of the height of an element's content, including content not visible on the screen due to overflow
+
+[img example](https://www.pinterest.com/pin/475340935679590985/)
+___
+
 ## get random color function
 
 The number 16,777,215 is the total possible combinations of RGB(255,255,255) which is 32 bit colour.
@@ -201,6 +223,11 @@ Observables provide support for passing messages between parts of your applicati
 
 [Angular](https://angular.io/guide/observables)
 
+___
+
+## return
+
+-- statement that ends function execution and specifies a value to be returned to the function caller
 ___
 
 ## subscribe() method
