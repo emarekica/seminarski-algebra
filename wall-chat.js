@@ -1,79 +1,68 @@
 "use strict";
 
-// const CHANNEL_ID: "M4trM8H1WVeEhszi";
+const CLIENT_ID = 'M4trM8H1WVeEhszi';
 
-// Connecting to a created Scaledrone channel
-const drone = new ScaleDrone("M4trM8H1WVeEhszi", {
-  // Properties sent out as clientData via events
+const drone = new ScaleDrone(CLIENT_ID, {
   data: {
-    name: randomName(),
-    color: randomColor(),
+    name: getRandomName(),
+    color: getRandomColor(),
   },
 });
 
-// members array that stores users connecting to a room
 let members = [];
 
-// connecting to OBSERVABLE-ROOM
-// provide additional functionality for keeping track of connected users and linking messages to users
-// way to attach data to a Socket connection (name, id)
-
-
-// opening connection, adding event listener
-drone.on("open", (error) => {
-  // error with connection
-  if (error) {
+// connecting to and joining the room
+drone.on("open", error => {
+  if(error) {
     return console.error(error);
   }
-  console.log(
-    "You are successfully connected! Welcome to the wall of writings!"
-  );
+  console.log("Successfully connected to Scaledrone!");
 
-  // event listener for messages
   const room = drone.subscribe("observable-room");
-
-  // event listener - array of members that joined the room
-  room.on("open", (error) => {
-    if (error) {
+  room.on("open", error => {
+    if(error) {
       return console.error(error);
     }
-    console.log("Successfully joined room");
+    console.log("Succesfully joined the room!");
   });
 
-  // list of currently online members
-  room.on("members", (m) => {
+  room.on("members", m => {
     members = m;
-    // updateMembersDOM(); uncomment later
+    updateMembersDOM();
   });
 
-  // event listener for users joining the room
-  room.on("member_join", (member) => {
+  room.on("members_join", member => {                
     members.push(member);
-    // updateMembersDOM(); uncomment later
+    updateMembersDom();
   });
-
-  // event listener for members leaving the room
-  room.on("member_leave", ({ id }) => {
-    const index = members.findIndex((member) => member.id === id);
+  
+  room.on("member_leave", ({id}) => {            // WTF 1
+    const index = members.findIndex(member =>
+    member.id === id);                           // WTF 2
     members.splice(index, 1);
-    // updateMembersDOM(); uncomment later
-  });
+    updateMembersDOM();
+  })
 
-  // Event listener for messages sent by user
-  room.on('data', (text, member) => {
-  if (member) {
-    // addMessageToListDOM(text, member); uncomment later
-  } else {
-    // Message is from server
-  }
+  room.on("data", (text, member) => {
+    if(member) {
+      addMessageToListDOM(text, member);
+    } else {
+      // Message is from server
+    }
   });
 });
 
+drone.on("error", error => {
+  console.error(error);
+});
+
+
+///////////////////////////////////////////////////////////////////////////
 
 // RANDOMIZERS
 
 // Function to get random name (15)
-function randomName() {
+function getRandomName() {
   const adjectives = [
     "arid",
     "acutum",
@@ -117,25 +106,43 @@ function randomName() {
 
 
 // Function to get random color 
-function randomColor() {
+function getRandomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
 }
 
 
-
 ///////////////////////////////////////////////////////
 
+// DOM related
+
 const DOM = {
-  members: document.querySelector(".members"),
+  membersCount: document.querySelector(".members-count"),
+  membersList: document.querySelector(".members-list"),
   messages: document.querySelector(".messages"),
   input: document.querySelector(".message-form__input"),
   form: document.querySelector(".message-form"),
 };
 
+DOM.form.addEventListener("submit", sendMessage);
 
-// Creating message element
+function sendMessage() {
+  const value = DOM.input.value;
+
+  if(value === "") {
+    return;
+  }
+
+  DOM.input.value = "";          // how to write this differently?
+  drone.publish({                // deprecated
+    room: "observable-room",
+    message: value,
+  });
+}
+
+// creating and adding MEMBER elements
 function createMemberElement(member) {
-  const { name, color } = member.clientData;
+  const { name, color } = member.clientData;     // wtf 3 
+
   const el = document.createElement("div");
   el.appendChild(document.createTextNode(name));
   el.className = "member";
@@ -144,16 +151,27 @@ function createMemberElement(member) {
   return el;
 }
 
+function updateMembersDOM() {
+  DOM.membersCount.innerText = `${members.length} users in room:`;
+  DOM.membersList.innerHTML = "";
 
+  members.forEach(member => 
+    DOM.membersList.appendChild(createMemberElement(member)
+    )
+  );
+}
+
+
+// creating and adding MESSAGE elements
 function createMessageElement(text, member) {
   const el = document.createElement("div");
+  
   el.appendChild(createMemberElement(member));
   el.appendChild(document.createTextNode(text));
   el.className = "message";
-  
+
   return el;
 }
-
 
 function addMessageToListDOM(text, member) {
   const el = DOM.messages;
@@ -161,23 +179,6 @@ function addMessageToListDOM(text, member) {
   el.appendChild(createMemberElement(text, member));
 
   if(wasTop) {
-    el.scrollTop = el.scrollHeight - el. clientHeight;
+    el.scrollTop = el.scrollHeight - el.clientHeight;
   }
-}
-
-// event listener on Send button
-DOM.form.addEventListener("subit", sendMessage);
-
-function sendMessage() {
-  const value = DOM.input.value;
-  
-  if(value === "") {
-    return;
-  }
-
-  DOM.input.value = "";
-  drone.publish({
-    room: "observable-room",
-    message: value,
-  });
 }

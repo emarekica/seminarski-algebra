@@ -151,6 +151,18 @@ When you create a script, whether inline in a <script> element or included in th
 
 ___
 
+## findIndex()
+
+The findIndex() method **returns the index of the first element in the array that satisfies the provided testing function.**
+
+Otherwise, it returns -1, indicating that no element passed the test.
+___
+
+## forEach()
+
+-- method that executes a provided function once for each array element.
+___
+
 ## math.floor()
 
 The Math.floor() function returns the largest integer less than or equal to a given number.
@@ -225,9 +237,34 @@ Observables provide support for passing messages between parts of your applicati
 
 ___
 
+## publish()
+
+* deprecated *
+
+Returns a `ConnectableObservable`, which is a variety of Observable that waits until its connect method is called before it begins emitting items to those Observers that have subscribed to it.
+___
+
 ## return
 
 -- statement that ends function execution and specifies a value to be returned to the function caller
+
+___
+
+## RxJS
+
+**Reactive Extension for Javascript**
+
+It is a JS library that uses observables to work with reactive programming that deals with asynchronous data calls, callbacks and event-based programs.
+RxJS can be used with other Javascript libraries and frameworks. It integrates well into Angular.
+
+React belongs to "Javascript UI Libraries" category of the tech stack, while **RxJS can be primarily classified under "Concurrency Frameworks"**. React and RxJS are both open source tools.
+
+The **concurrency** utilities packages provide a powerful, extensible framework of high-performance threading utilities such as thread pools and blocking queues. This package frees the programmer from the need to craft these utilities by hand, in much the same manner the collections framework did for data structures.
+___
+
+## splice()
+
+The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
 ___
 
 ## subscribe() method

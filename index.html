@@ -20,10 +20,11 @@
   <body>
     <h1>Wall writings</h1>
 
-    <div class="members"></div>
+    <div class="members-count">-</div>
+    <div class="members-list">-</div>
     <div class="messages"></div>
 
-    <form class="message-form">
+    <form class="message-form" onsubmit="return false;">
 
       <input
         class="message-form__input"
@@ -32,9 +33,11 @@
         type="text" />
 
       <button
-        class="message-form__submit"
+        class="message-form__button"
         id="send-button"
-        type="submit">
+        type="submit"
+        value="send">
+
         <img
           src="/visuals/brushstroke-1.png" 
           alt="White wall with wide gray brush strokes"
