@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 const CLIENT_ID = 'M4trM8H1WVeEhszi';
 
@@ -11,40 +11,40 @@ const drone = new ScaleDrone(CLIENT_ID, {
 
 let members = [];
 
+
 // connecting to and joining the room
-drone.on("open", error => {
-  if(error) {
+drone.on('open', error => {
+  if (error) {
     return console.error(error);
   }
-  console.log("Successfully connected to Scaledrone!");
+  console.log('Successfully connected to Scaledrone');
 
-  const room = drone.subscribe("observable-room");
-  room.on("open", error => {
-    if(error) {
+  const room = drone.subscribe('observable-room');
+  room.on('open', error => {
+    if (error) {
       return console.error(error);
     }
-    console.log("Succesfully joined the room!");
+    console.log('Successfully joined room');
   });
 
-  room.on("members", m => {
+  room.on('members', m => {
     members = m;
     updateMembersDOM();
   });
 
-  room.on("members_join", member => {                
+  room.on('member_join', member => {
     members.push(member);
-    updateMembersDom();
+    updateMembersDOM();
   });
-  
-  room.on("member_leave", ({id}) => {            // WTF 1
-    const index = members.findIndex(member =>
-    member.id === id);                           // WTF 2
+
+  room.on('member_leave', ({id}) => {
+    const index = members.findIndex(member => member.id === id); // wtf
     members.splice(index, 1);
     updateMembersDOM();
-  })
+  });
 
-  room.on("data", (text, member) => {
-    if(member) {
+  room.on('data', (text, member) => {
+    if (member) {
       addMessageToListDOM(text, member);
     } else {
       // Message is from server
@@ -52,7 +52,11 @@ drone.on("open", error => {
   });
 });
 
-drone.on("error", error => {
+drone.on('close', event => {
+  console.log('Connection was closed', event);
+});
+
+drone.on('error', error => {
   console.error(error);
 });
 
@@ -63,7 +67,7 @@ drone.on("error", error => {
 
 // Function to get random name (15)
 function getRandomName() {
-  const adjectives = [
+  const adjs = [
     "arid",
     "acutum",
     "bellum",
@@ -98,7 +102,7 @@ function getRandomName() {
     "sisymbrium",   
   ];
   return (
-    adjectives[Math.floor(Math.random() * adjectives.length)] +
+    adjs[Math.floor(Math.random() * adjs.length)] +
     "_" +
     nouns[Math.floor(Math.random() * nouns.length)]
   );
@@ -116,36 +120,35 @@ function getRandomColor() {
 // DOM related
 
 const DOM = {
-  membersCount: document.querySelector(".members-count"),
-  membersList: document.querySelector(".members-list"),
-  messages: document.querySelector(".messages"),
-  input: document.querySelector(".message-form__input"),
-  form: document.querySelector(".message-form"),
+  membersCount: document.querySelector('.members-count'),
+  membersList: document.querySelector('.members-list'),
+  messages: document.querySelector('.messages'),
+  input: document.querySelector('.message-form__input'),
+  form: document.querySelector('.message-form'),
 };
 
-DOM.form.addEventListener("submit", sendMessage);
+DOM.form.addEventListener('submit', sendMessage);
 
 function sendMessage() {
   const value = DOM.input.value;
-
-  if(value === "") {
+  if (value === '') {
     return;
   }
-
-  DOM.input.value = "";          // how to write this differently?
-  drone.publish({                // deprecated
-    room: "observable-room",
+  DOM.input.value = '';                 // how to write differently
+  drone.publish({                       // deprecated
+    room: 'observable-room',
     message: value,
   });
 }
 
-// creating and adding MEMBER elements
-function createMemberElement(member) {
-  const { name, color } = member.clientData;     // wtf 3 
 
-  const el = document.createElement("div");
+// creating and adding MEMBERS
+function createMemberElement(member) {
+  const { name, color } = member.clientData;  // wtf
+
+  const el = document.createElement('div');
   el.appendChild(document.createTextNode(name));
-  el.className = "member";
+  el.className = 'member';
   el.style.color = color;
 
   return el;
@@ -153,22 +156,19 @@ function createMemberElement(member) {
 
 function updateMembersDOM() {
   DOM.membersCount.innerText = `${members.length} users in room:`;
-  DOM.membersList.innerHTML = "";
+  DOM.membersList.innerHTML = '';
 
-  members.forEach(member => 
-    DOM.membersList.appendChild(createMemberElement(member)
-    )
+  members.forEach(member =>
+    DOM.membersList.appendChild(createMemberElement(member))
   );
 }
 
-
-// creating and adding MESSAGE elements
+// creating and adding MESSAGES
 function createMessageElement(text, member) {
-  const el = document.createElement("div");
-  
+  const el = document.createElement('div');
   el.appendChild(createMemberElement(member));
   el.appendChild(document.createTextNode(text));
-  el.className = "message";
+  el.className = 'message';
 
   return el;
 }
@@ -176,9 +176,9 @@ function createMessageElement(text, member) {
 function addMessageToListDOM(text, member) {
   const el = DOM.messages;
   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
-  el.appendChild(createMemberElement(text, member));
+  el.appendChild(createMessageElement(text, member));
 
-  if(wasTop) {
+  if (wasTop) {
     el.scrollTop = el.scrollHeight - el.clientHeight;
   }
 }

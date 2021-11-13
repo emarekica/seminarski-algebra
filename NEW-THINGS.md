@@ -1,5 +1,13 @@
 # RANDOM NEW THINGS
 
+**content**
+
+- arrow functions
+- callbacks
+- element.scrollTop()
+- element.clientHeight()
+
+
 ## arrow => functions
 
 ```js
@@ -66,7 +74,7 @@ Can be set to any integer value, with certain caveats:
   - if set to a value greater than the maximum available for the element, `scrollTop` settles itself to the maximum value
 ___
 
-## element.clientHeight
+## element.clientHeight()
 
 -- read-only property
 -- zero for elements with no CSS or inline layout boxes
@@ -156,6 +164,9 @@ ___
 The findIndex() method **returns the index of the first element in the array that satisfies the provided testing function.**
 
 Otherwise, it returns -1, indicating that no element passed the test.
+___
+
+## flex-grow & flex shring
 ___
 
 ## forEach()
