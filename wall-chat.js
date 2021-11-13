@@ -132,6 +132,7 @@ const DOM = {
   form: document.querySelector(".message-form"),
 };
 
+
 // Creating message element
 function createMemberElement(member) {
   const { name, color } = member.clientData;
@@ -143,9 +144,27 @@ function createMemberElement(member) {
   return el;
 }
 
-function updateMembersDOM() {
-  DOM.members.innerHTML = '';
-  members.forEach(member => {
-    DOM.members.appendChild(createMemberElement(member))
-  });
+
+function createMessageElement(text, member) {
+  const el = document.createElement("div");
+  el.appendChild(createMemberElement(member));
+  el.appendChild(document.createTextNode(text));
+  el.className = "message";
+  
+  return el;
 }
+
+
+function addMessageToListDOM(text, member) {
+  const el = DOM.messages;
+  const wasTop = el.scrollTop === el.scrollHeight
+}
+
+// function addMessageToListDOM(text, member) {
+//   const el = DOM.messages;
+//   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+//   el.appendChild(createMessageElement(text, member));
+//   if (wasTop) {
+//     el.scrollTop = el.scrollHeight - el.clientHeight;
+//   }
+//  }

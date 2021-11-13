@@ -1,3 +1,5 @@
+# RANDOM NEW THINGS
+
 ## arrow => functions
 
 ```js
@@ -22,14 +24,46 @@ a => a + 100;
 
 ___
 
-## math.floor()
+# CALLBACKS
 
-The Math.floor() function returns the largest integer less than or equal to a given number.
+MDN: A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
 
+**SYNCHRONOUS CALLBACK example (executed immediately):** 
+
+```js
+function greeting(name) {
+  	alert('Hello ' + name);
+}
+
+function processUserInput(callback) {
+ 	 var name = prompt('Please enter your name.');
+ 	callback(name);
+}
+
+processUserInput(greeting);
+```
+
+**ASYNCHRONOUS CALLBACKS**
+
+Callbacks are often used after asynchronous operation has completed.
+example: 
+	 - callback function executed inside s `.then()` block chained ontho the endo of a promise after promise fulfills or rejects
+	- used in  web API’s ( fetch() )
+
+[MDN](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 
 ___
 
-# CALLBACKS
+## element.scrollTop()
+
+-- property that gets or sets the number of pixels that an element's content is scrolled vertically
+-- measurement of the distance from the element's top to its topmost visible content
+
+Can be set to any integer value, with certain caveats:
+
+  - if the element can't be scrolled (e.g. it has no overflow or if the element has a property of "non-scrollable"), `scrollTop` is 0
+  - `scrollTop` doesn't respond to negative values; instead, it sets itself back to 0
+  - if set to a value greater than the maximum available for the element, `scrollTop` settles itself to the maximum value
 ___
 
 ## get random color function
@@ -56,18 +90,49 @@ The number 16,777,215 is the total possible combinations of RGB(255,255,255) whi
 
 ___
 
-`createTextNode()`
+## `createTextNode()`
+
+adds text to HTML elements
+
+`var text = document.createTextNode(data);`
+
+	_text_  = text node
+	_data_ = string containing the data to be put in the text node
 
 ___
 
 { } braces after const
 ___
 
-`className`
+## `className`
 
+The `className` property of the Element interface gets and sets the value of the class attribute of the specified element.
 ___
 
 `createMemberElement`
+
+___
+
+## DOM API
+
+DOM connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory
+
+**use APIs to create web content and application**
+
+ACCESSING THE DOM
+
+You don't have to do anything special to begin using the DOM. You use the API directly in JavaScript from within what is called a script, a program run by a browser.
+
+When you create a script, whether inline in a <script> element or included in the web page, you can immediately begin using the API for the document or window objects to manipulate the document itself, or any of the various elements in the web page (the descendant elements of the document).
+
+[INTRO TO DOM - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+
+___
+
+## math.floor()
+
+The Math.floor() function returns the largest integer less than or equal to a given number.
+
 
 ___
 
@@ -123,6 +188,18 @@ emitter.emit('foo', { text: 'Foo event triggered' });
 
 - to attach an event that only runs once and then removes itself, use the one() method.
 
+___
+
+## observable
+
+ANGULAR
+
+**Using observables to pass values:**
+
+Observables provide support for passing messages between parts of your application. They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
+
+
+[Angular](https://angular.io/guide/observables)
 
 ___
 
@@ -154,20 +231,6 @@ If you want it to run some logic on error (similar to .catch()) or on complete (
 **Subscriber function**
 This is the function that is executed when a consumer calls the subscribe() method.
 The subscriber function defines how to obtain or generate values or messages to be published.
-
-___
-
-## observable
-
-ANGULAR
-
-**Using observables to pass values:**
-
-Observables provide support for passing messages between parts of your application. They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
-
-
-[Angular](https://angular.io/guide/observables)
-
 
 ___
 
