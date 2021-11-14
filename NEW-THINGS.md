@@ -94,6 +94,15 @@ ___
 -- read-only property is a measurement of the height of an element's content, including content not visible on the screen due to overflow
 
 [img example](https://www.pinterest.com/pin/475340935679590985/)
+
+___
+
+## em, rem
+
+- rem values are relative to the root html element, not to the parent element
+- if font-size of the root element is 16px then 1 rem = 16px for all elements
+
+- if font-size is not explicitly defined in root element then 1rem will be equal to the default font-size provided by the browser **(usually 16px)**
 ___
 
 ## get random color function
