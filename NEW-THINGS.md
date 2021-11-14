@@ -4,9 +4,28 @@
 
 - arrow functions
 - callbacks
-- element.scrollTop()
+- className
+- createElement()
+- createTextNode()
+- DOM API
 - element.clientHeight()
+- elemeny.scrollHeigh()
+- element.scrollTop()
+- em, rem
+- findIndex()
+- flex-grow, flex-shrink
+- forEach()
+- math.floor()
+- on()
+- an observable
+- publish()
+- RANDOMIZER
+- return
+- RxJS
+- splice()
+- subscribe()
 
+___ 
 
 ## arrow => functions
 
@@ -62,16 +81,40 @@ example:
 
 ___
 
-## element.scrollTop()
+## className
 
--- property that gets or sets the number of pixels that an element's content is scrolled vertically
--- measurement of the distance from the element's top to its topmost visible content
+The `className` property of the Element interface gets and sets the value of the class attribute of the specified element.
+___
 
-Can be set to any integer value, with certain caveats:
+## createElement
 
-  - if the element can't be scrolled (e.g. it has no overflow or if the element has a property of "non-scrollable"), `scrollTop` is 0
-  - `scrollTop` doesn't respond to negative values; instead, it sets itself back to 0
-  - if set to a value greater than the maximum available for the element, `scrollTop` settles itself to the maximum value
+___
+
+## createTextNode()
+
+adds text to HTML elements
+
+`var text = document.createTextNode(data);`
+
+	_text_  = text node
+	_data_ = string containing the data to be put in the text node
+
+___
+
+## DOM API
+
+DOM connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory
+
+**use APIs to create web content and application**
+
+ACCESSING THE DOM
+
+You don't have to do anything special to begin using the DOM. You use the API directly in JavaScript from within what is called a script, a program run by a browser.
+
+When you create a script, whether inline in a <script> element or included in the web page, you can immediately begin using the API for the document or window objects to manipulate the document itself, or any of the various elements in the web page (the descendant elements of the document).
+
+[INTRO TO DOM - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+
 ___
 
 ## element.clientHeight()
@@ -97,74 +140,26 @@ ___
 
 ___
 
+## element.scrollTop()
+
+-- property that gets or sets the number of pixels that an element's content is scrolled vertically
+-- measurement of the distance from the element's top to its topmost visible content
+
+Can be set to any integer value, with certain caveats:
+
+  - if the element can't be scrolled (e.g. it has no overflow or if the element has a property of "non-scrollable"), `scrollTop` is 0
+  - `scrollTop` doesn't respond to negative values; instead, it sets itself back to 0
+  - if set to a value greater than the maximum available for the element, `scrollTop` settles itself to the maximum value
+
+___
+
 ## em, rem
 
 - rem values are relative to the root html element, not to the parent element
 - if font-size of the root element is 16px then 1 rem = 16px for all elements
 
 - if font-size is not explicitly defined in root element then 1rem will be equal to the default font-size provided by the browser **(usually 16px)**
-___
 
-## get random color function
-
-The number 16,777,215 is the total possible combinations of RGB(255,255,255) which is 32 bit colour.
-
-  ffffff = 16,777,215
-  16 (hexadecimal)
-
-  ``js
-
-  // varijanta 1
-  function getRandomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  }
-
-  //varijanta 2
-  function randomColor() {
-    return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
-  }
-  ``
-
-[Random Hex Color Code Generator in JavaScript](https://www.paulirish.com/2009/random-hex-color-code-snippets/)
-
-___
-
-## `createTextNode()`
-
-adds text to HTML elements
-
-`var text = document.createTextNode(data);`
-
-	_text_  = text node
-	_data_ = string containing the data to be put in the text node
-
-___
-
-{ } braces after const
-___
-
-## `className`
-
-The `className` property of the Element interface gets and sets the value of the class attribute of the specified element.
-___
-
-`createMemberElement`
-
-___
-
-## DOM API
-
-DOM connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory
-
-**use APIs to create web content and application**
-
-ACCESSING THE DOM
-
-You don't have to do anything special to begin using the DOM. You use the API directly in JavaScript from within what is called a script, a program run by a browser.
-
-When you create a script, whether inline in a <script> element or included in the web page, you can immediately begin using the API for the document or window objects to manipulate the document itself, or any of the various elements in the web page (the descendant elements of the document).
-
-[INTRO TO DOM - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
 ___
 
@@ -175,7 +170,7 @@ The findIndex() method **returns the index of the first element in the array tha
 Otherwise, it returns -1, indicating that no element passed the test.
 ___
 
-## flex-grow & flex shring
+## flex-grow & flex-shrink
 ___
 
 ## forEach()
@@ -264,6 +259,30 @@ ___
 Returns a `ConnectableObservable`, which is a variety of Observable that waits until its connect method is called before it begins emitting items to those Observers that have subscribed to it.
 ___
 
+## RANDOMIZER
+
+The number 16,777,215 is the total possible combinations of RGB(255,255,255) which is 32 bit colour.
+
+  ffffff = 16,777,215
+  16 (hexadecimal)
+
+  ``js
+
+  // varijanta 1
+  function getRandomColor() {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+
+  //varijanta 2
+  function randomColor() {
+    return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+  }
+  ``
+
+[Random Hex Color Code Generator in JavaScript](https://www.paulirish.com/2009/random-hex-color-code-snippets/)
+
+___
+
 ## return
 
 -- statement that ends function execution and specifies a value to be returned to the function caller
@@ -287,7 +306,7 @@ ___
 The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
 ___
 
-## subscribe() method
+## subscribe()
 
 ANGULAR
 
