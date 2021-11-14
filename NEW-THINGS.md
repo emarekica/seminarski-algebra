@@ -16,8 +16,8 @@
 - flex-grow, flex-shrink
 - forEach()
 - math.floor()
+- observable
 - on()
-- an observable
 - publish()
 - RANDOMIZER
 - return
@@ -101,6 +101,49 @@ adds text to HTML elements
 
 ___
 
+## destructuring assignment: const {...}
+
+--  JS expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+-- ES6
+
+  ```js
+  let a, b, rest;
+  [a, b] = [10, 20];
+  console.log(a); // 10
+  console.log(b); // 20
+
+  [a, b, ...rest] = [10, 20, 30, 40, 50];
+  console.log(a); // 10
+  console.log(b); // 20
+  console.log(rest); // [30, 40, 50]
+
+  ({ a, b } = { a: 10, b: 20 });
+  console.log(a); // 10
+  console.log(b); // 20
+
+  // Stage 4(finished) proposal
+  ({a, b, ...rest} = {a: 10, b: 20, c: 30, d: 40});
+  console.log(a); // 10
+  console.log(b); // 20
+  console.log(rest); // {c: 30, d: 40}
+
+```
+
+
+  ```js
+  function createMemberElement(member) {
+    const { name, color } = member.clientData;          
+
+    const el = document.createElement('div');
+    el.appendChild(document.createTextNode(name));
+    el.className = 'member';
+    el.style.color = color;
+
+    return el;
+  }
+  ```
+___
+
 ## DOM API
 
 DOM connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory
@@ -182,6 +225,18 @@ ___
 
 The Math.floor() function returns the largest integer less than or equal to a given number.
 
+___
+
+## observable
+
+ANGULAR
+
+**Using observables to pass values:**
+
+Observables provide support for passing messages between parts of your application. They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
+
+
+[Angular](https://angular.io/guide/observables)
 
 ___
 
@@ -236,19 +291,6 @@ emitter.emit('foo', { text: 'Foo event triggered' });
 - to remove event handlers, use the off() method.
 
 - to attach an event that only runs once and then removes itself, use the one() method.
-
-___
-
-## observable
-
-ANGULAR
-
-**Using observables to pass values:**
-
-Observables provide support for passing messages between parts of your application. They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
-
-
-[Angular](https://angular.io/guide/observables)
 
 ___
 

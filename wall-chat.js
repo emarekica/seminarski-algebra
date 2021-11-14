@@ -9,6 +9,7 @@ const drone = new ScaleDrone(CLIENT_ID, {
   },
 });
 
+// Stores members
 let members = [];
 
 
@@ -19,7 +20,10 @@ drone.on('open', error => {
   }
   console.log('Successfully connected to Scaledrone');
 
+  // Subscribe to messages
+  // wait until it is successful and then execute the first passed callback function - updateMembersDOM()
   const room = drone.subscribe('observable-room');
+
   room.on('open', error => {
     if (error) {
       return console.error(error);
@@ -27,35 +31,39 @@ drone.on('open', error => {
     console.log('Successfully joined room');
   });
 
+  // Gives array of members that joined the room
   room.on('members', m => {
     members = m;
     updateMembersDOM();
   });
 
+  // New member joins the room
   room.on('member_join', member => {
     members.push(member);
     updateMembersDOM();
   });
 
-  room.on('member_leave', ({id}) => {
-    const index = members.findIndex(member => member.id === id); // wtf
+  // Member leaves the room
+  room.on('member_leave', ({id}) => {                              // wtf on
+    const index = members.findIndex(member => member.id === id);   
     members.splice(index, 1);
     updateMembersDOM();
   });
 
+  // Listen to messages sent by users & add them to messages <div>
   room.on('data', (text, member) => {
     if (member) {
       addMessageToListDOM(text, member);
-    } else {
-      // Message is from server
-    }
+    } 
   });
 });
 
+// Closing connection to Scaledrone
 drone.on('close', event => {
   console.log('Connection was closed', event);
 });
 
+// Problems with the connection
 drone.on('error', error => {
   console.error(error);
 });
@@ -127,6 +135,7 @@ const DOM = {
   form: document.querySelector('.message-form'),
 };
 
+// Event listener for sending messages
 DOM.form.addEventListener('submit', sendMessage);
 
 function sendMessage() {
@@ -134,8 +143,8 @@ function sendMessage() {
   if (value === '') {
     return;
   }
-  DOM.input.value = '';                 // how to write differently
-  drone.publish({                       // deprecated
+  DOM.input.value = '';                 // how to write differently, publish() is deprecated
+  drone.publish({                       
     room: 'observable-room',
     message: value,
   });
@@ -144,7 +153,7 @@ function sendMessage() {
 
 // creating and adding MEMBERS
 function createMemberElement(member) {
-  const { name, color } = member.clientData;  // wtf
+  const { name, color } = member.clientData;          
 
   const el = document.createElement('div');
   el.appendChild(document.createTextNode(name));
@@ -154,6 +163,7 @@ function createMemberElement(member) {
   return el;
 }
 
+// Who's online
 function updateMembersDOM() {
   DOM.membersCount.innerText = `${members.length} users in room:`;
   DOM.membersList.innerHTML = '';
@@ -175,6 +185,8 @@ function createMessageElement(text, member) {
 
 function addMessageToListDOM(text, member) {
   const el = DOM.messages;
+
+  // auto-scroll to the bottom of the chat
   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
   el.appendChild(createMessageElement(text, member));
 
