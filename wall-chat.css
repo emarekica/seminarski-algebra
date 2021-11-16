@@ -52,15 +52,90 @@ table {
 }
 
 * { 
-  font-family: 'Gaegu', cursive;
+  font-family: 'Architects Daughter', cursive;
 }
 
 body {
   box-sizing: border-box;
-  background-image: url("./wallpaper-1.png");
+  background-image: url("/visuals/wallpaper-1.png");
+  max-height: 100vh;
+
+  margin: 0;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  
+  
 }
 
-#brushstroke {
-  width: 1em;
+h1 { 
+  margin: auto;
+  padding: 1em;
+
+  font-family: 'Architects Daughter', cursive;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+ }
+
+.members-count,
+.members-list,
+.messages {
   border: none;
+  padding: 15px;
+  margin-bottom: 15;
+
+  background-color: rgba(255, 255, 255, 0.445);
+
+  font-family: 'Architects Daughter', cursive;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+}
+
+.messages { 
+  flex-shrink: 1;
+  overflow: auto;
+}
+
+.message { padding: 5px 0; }
+.message .member { display: inline-block; }
+.members-list { line-height: 1em; }
+
+.member {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  padding-right: 2em;
+}
+
+.message-form {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.message-form__input {
+  flex-grow: 1;
+  border: none;
+  padding: 10px 15px;
+
+  background-color: rgba(255, 255, 255, 0.445);
+
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.message-form__button {
+  margin: auto; 
+  border: none;
+
+  background-color: rgba(255, 255, 255, 0.445);
+}
+
+
+#brushstroke {
+  position: relative;
+
+  width: 3em;
+  margin: 0 0.5em 0.5em 0;
 }

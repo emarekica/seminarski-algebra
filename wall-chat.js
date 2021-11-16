@@ -1,80 +1,81 @@
-"use strict";
+// "use strict";
 
-// const CHANNEL_ID: "M4trM8H1WVeEhszi";
+const CLIENT_ID = 'M4trM8H1WVeEhszi';
 
-// Connecting to a created Scaledrone channel
-const drone = new ScaleDrone("M4trM8H1WVeEhszi", {
-  // Properties sent out as clientData via events
+const drone = new ScaleDrone(CLIENT_ID, {
   data: {
-    name: randomName(),
-    color: randomColor(),
+    name: getRandomName(),
+    color: getRandomColor(),
   },
 });
 
-// members array that stores users connecting to a room
+// Stores members
 let members = [];
 
-// connecting to OBSERVABLE-ROOM
-// provide additional functionality for keeping track of connected users and linking messages to users
-// way to attach data to a Socket connection (name, id)
 
-
-// opening connection, adding event listener
-drone.on("open", (error) => {
-  // error with connection
+// connecting to and joining the room
+drone.on('open', error => {
   if (error) {
     return console.error(error);
   }
-  console.log(
-    "You are successfully connected! Welcome to the wall of writings!"
-  );
+  console.log('Successfully connected to Scaledrone');
 
-  // event listener for messages
-  const room = drone.subscribe("observable-room");
+  // Subscribe to messages
+  // wait until it is successful and then execute the first passed callback function - updateMembersDOM()
+  const room = drone.subscribe('observable-room');
 
-  // event listener - array of members that joined the room
-  room.on("open", (error) => {
+  room.on('open', error => {
     if (error) {
       return console.error(error);
     }
-    console.log("Successfully joined room");
+    console.log('Successfully joined room');
   });
 
-  // list of currently online members
-  room.on("members", (m) => {
+  // Gives array of members that joined the room
+  room.on('members', m => {
     members = m;
-    // updateMembersDOM(); uncomment later
+    updateMembersDOM();
   });
 
-  // event listener for users joining the room
-  room.on("member_join", (member) => {
+  // New member joins the room
+  room.on('member_join', member => {
     members.push(member);
-    // updateMembersDOM(); uncomment later
+    updateMembersDOM();
   });
 
-  // event listener for members leaving the room
-  room.on("member_leave", ({ id }) => {
-    const index = members.findIndex((member) => member.id === id);
+  // Member leaves the room
+  room.on('member_leave', ({id}) => {                              // wtf on
+    const index = members.findIndex(member => member.id === id);   
     members.splice(index, 1);
-    // updateMembersDOM(); uncomment later
+    updateMembersDOM();
   });
 
-  // Event listener for messages sent by user
+  // Listen to messages sent by users & add them to messages <div>
   room.on('data', (text, member) => {
-  if (member) {
-    // addMessageToListDOM(text, member); uncomment later
-  } else {
-    // Message is from server
-  }
+    if (member) {
+      addMessageToListDOM(text, member);
+    } 
   });
 });
 
+// Closing connection to Scaledrone
+drone.on('close', event => {
+  console.log('Connection was closed', event);
+});
+
+// Problems with the connection
+drone.on('error', error => {
+  console.error(error);
+});
+
+
+///////////////////////////////////////////////////////////////////////////
 
 // RANDOMIZERS
 
 // Function to get random name (15)
-function randomName() {
-  const adjectives = [
+function getRandomName() {
+  const adjs = [
     "arid",
     "acutum",
     "bellum",
@@ -109,7 +110,7 @@ function randomName() {
     "sisymbrium",   
   ];
   return (
-    adjectives[Math.floor(Math.random() * adjectives.length)] +
+    adjs[Math.floor(Math.random() * adjs.length)] +
     "_" +
     nouns[Math.floor(Math.random() * nouns.length)]
   );
@@ -117,35 +118,79 @@ function randomName() {
 
 
 // Function to get random color 
-function randomColor() {
+function getRandomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
 }
 
 
-
 ///////////////////////////////////////////////////////
 
+// DOM related
+
 const DOM = {
-  members: document.querySelector(".members"),
-  messages: document.querySelector(".messages"),
-  input: document.querySelector(".message-form__input"),
-  form: document.querySelector(".message-form"),
+  membersCount: document.querySelector('.members-count'),
+  membersList: document.querySelector('.members-list'),
+  messages: document.querySelector('.messages'),
+  input: document.querySelector('.message-form__input'),
+  form: document.querySelector('.message-form'),
 };
 
-// Creating message element
+// Event listener for sending messages
+DOM.form.addEventListener('submit', sendMessage);
+
+function sendMessage() {
+  const value = DOM.input.value;
+  if (value === '') {
+    return;
+  }
+  DOM.input.value = '';                 // how to write differently, publish() is deprecated
+  drone.publish({                       
+    room: 'observable-room',
+    message: value,
+  });
+}
+
+
+// creating and adding MEMBERS
 function createMemberElement(member) {
-  const { name, color } = member.clientData;
-  const el = document.createElement("div");
+  const { name, color } = member.clientData;          
+
+  const el = document.createElement('div');
   el.appendChild(document.createTextNode(name));
-  el.className = "member";
+  el.className = 'member';
   el.style.color = color;
 
   return el;
 }
 
+// Who's online
 function updateMembersDOM() {
-  DOM.members.innerHTML = '';
-  members.forEach(member => {
-    DOM.members.appendChild(createMemberElement(member))
-  });
+  DOM.membersCount.innerText = `${members.length} users in room:`;
+  DOM.membersList.innerHTML = '';
+
+  members.forEach(member =>
+    DOM.membersList.appendChild(createMemberElement(member))
+  );
+}
+
+// creating and adding MESSAGES
+function createMessageElement(text, member) {
+  const el = document.createElement('div');
+  el.appendChild(createMemberElement(member));
+  el.appendChild(document.createTextNode(text));
+  el.className = 'message';
+
+  return el;
+}
+
+function addMessageToListDOM(text, member) {
+  const el = DOM.messages;
+
+  // auto-scroll to the bottom of the chat
+  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+  el.appendChild(createMessageElement(text, member));
+
+  if (wasTop) {
+    el.scrollTop = el.scrollHeight - el.clientHeight;
+  }
 }
