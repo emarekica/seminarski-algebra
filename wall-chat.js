@@ -261,7 +261,7 @@ function createMemberElement(member) {
 
 // Who's online
 function updateMembersDOM() {
-  DOM.membersCount.innerText = `${members.length} users in room:`;
+  DOM.membersCount.innerText = `${members.length} artists near the wall:`;
 <<<<<<< HEAD
   DOM.membersList.innerHTML = "";
 
