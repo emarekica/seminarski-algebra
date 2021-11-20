@@ -6,6 +6,7 @@
 - background (CSS)
 - callbacks
 - className
+- clear (CSS)
 - createElement()
 - createTextNode()
 - DOM API
@@ -106,6 +107,12 @@ ___
 ## className
 
 The `className` property of the Element interface gets and sets the value of the class attribute of the specified element.
+___
+
+## clear (CSS)
+
+The clear CSS property sets whether an element must be moved below (cleared) floating elements that precede it. The clear property applies to floating and non-floating elements.
+
 ___
 
 ## createElement
