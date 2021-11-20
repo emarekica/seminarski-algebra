@@ -89,7 +89,7 @@ h1 {
   padding: 15px;
   margin-bottom: 15;
 
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.5);
 
   font-family: 'Architects Daughter', cursive;
   font-size: 1.2em;
@@ -99,9 +99,12 @@ h1 {
 
 .messages { 
   flex-shrink: 1;
+  height: 50vh;
   overflow: auto;
 
   background: url(/visuals/messages-bckg.png);
+  background-size: cover;
+  background-position: top;
 }
 
 .message { padding: 5px 0; }
@@ -125,11 +128,11 @@ h1 {
   border: none;
   padding: 10px 15px;
 
-  background-color: rgba(255, 255, 255, 0.445);
-
   font-size: 16px;
   letter-spacing: 0.1em;
   color: rgb(34, 34, 34, 0.8);
+
+background-color: rgba(255, 255, 255, 0.445);
 }
 
 .message-form__button {
@@ -144,5 +147,5 @@ h1 {
   position: relative;
 
   width: 3em;
-  margin: 0 0.5em 0.5em 0;
+  margin: 0.5em 0.5em;
 }
