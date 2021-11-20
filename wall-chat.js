@@ -172,7 +172,7 @@ function createMemberElement(member) {
 
 // Update who's online
 function updateMembersDOM() {
-  DOM.membersCount.innerText = `${members.length} artists near the wall:`;
+  DOM.membersCount.innerText = `${members.length} artists ready to create:`;
   DOM.membersList.innerHTML = "";
 
   members.forEach((member) =>
