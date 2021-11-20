@@ -3,6 +3,7 @@
 **content**
 
 - arrow functions
+- background (CSS)
 - callbacks
 - className
 - createElement()
@@ -48,6 +49,27 @@ function (a){
 // 3. Remove the argument parentheses
 a => a + 100;
 ```
+___
+
+## background properties
+
+_background-size_ 
+- contain
+- cover
+- auto
+- length
+
+- percentage
+
+Stretches the image in the corresponding dimension to the specified percentage of the background positioning area.
+The background positioning area is determined by the value of background-origin (by default, the padding box).
+
+
+_making background lighter_
+- add linear-gradient
+
+`background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url("/visuals/wallpaper-2.png");`
+
 
 ___
 

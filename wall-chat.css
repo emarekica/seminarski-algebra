@@ -57,8 +57,9 @@ table {
 
 body {
   box-sizing: border-box;
-  background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url("/visuals/wallpaper-2.jpg");
-  max-height: 100vh;
+  background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url("/visuals/wallpaper-2.png");
+  background-size: 280%;
+
 
   margin: 0;
   padding: 2em;
@@ -87,7 +88,7 @@ h1 {
   padding: 15px;
   margin-bottom: 15;
 
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: rgba(255, 255, 255, 0.45);
 
   font-family: 'Architects Daughter', cursive;
   font-size: 1.2em;
@@ -98,6 +99,8 @@ h1 {
 .messages { 
   flex-shrink: 1;
   overflow: auto;
+
+  background: url(/visuals/messages-bckg.png);
 }
 
 .message { padding: 5px 0; }
@@ -125,6 +128,7 @@ h1 {
 
   font-size: 16px;
   letter-spacing: 0.1em;
+  color: rgb(34, 34, 34, 0.8);
 }
 
 .message-form__button {
