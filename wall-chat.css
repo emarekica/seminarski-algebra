@@ -57,17 +57,18 @@ table {
 
 body {
   box-sizing: border-box;
-  background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url("/visuals/wallpaper-2.png");
-  background-size: 280%;
-
-
-  margin: 0;
-  padding: 2em;
   display: flex;
   flex-direction: column;
   justify-content: baseline;
-  
-  
+  margin: 0;
+  padding: 2em;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.3), 
+rgba(255,255,255,0.3)),
+    url("/visuals/wallpaper-2.png");
+  background-size: 100%;
+  background-repeat: initial;
 }
 
 h1 { 
