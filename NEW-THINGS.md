@@ -17,6 +17,7 @@
 - findIndex()
 - flex-grow, flex-shrink
 - forEach()
+- left (CSS)
 - map()
 - math.floor()
 - observable
@@ -113,6 +114,8 @@ ___
 ## clear (CSS)
 
 The clear CSS property sets whether an element must be moved below (cleared) floating elements that precede it. The clear property applies to floating and non-floating elements.
+
+**This was the solution to messages stacking themselves one next to the other on the left rather than one under the other.**
 
 ___
 
@@ -249,6 +252,32 @@ ___
 ## forEach()
 
 -- method that executes a provided function once for each array element.
+___
+
+## left (CSS)
+
+The `left` CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.
+
+
+```
+/* <length> values */
+  left: 3px;
+  left: 2.4em;
+
+/* <percentage>s of the width of the containing block */
+  left: 10%;
+
+/* Keyword value */
+  left: auto;
+
+/* Global values */
+  left: inherit;
+  left: initial;
+  left: revert;
+  left: unset;
+
+```
+
 ___
 
 ## map()
