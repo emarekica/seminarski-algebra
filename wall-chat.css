@@ -82,8 +82,7 @@ h1 {
   color: rgb(34, 34, 34, 0.8);
  }
 
-.members-count,
-.members-list,
+.members,
 .messages {
   border: none;
   padding: 15px;
@@ -121,7 +120,7 @@ h1 {
 
 .message { padding: 5px 0; }
 .message .member { display: inline-block; }
-.members-list { line-height: 1em; }
+.members { line-height: 1em; }
 
 .member {
   position: relative;
