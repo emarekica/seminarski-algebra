@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 // Connecting to Scaledrone channel ID
 const CLIENT_ID = "M4trM8H1WVeEhszi";
@@ -49,14 +49,12 @@ drone.on("open", (error) => {
 
   // Member leaves the room
   room.on("member_leave", ({ id }) => {
-    // wtf on
     const index = members.findIndex((member) => member.id === id);
     members.splice(index, 1);
     updateMembersDOM();
   });
 
-
-  // Listens to messages sent by users & add them to messages <div>
+  // Listen to messages sent by users & add them to messages <div>
   room.on("data", (text, member) => {
     if (member) {
       addMessageToListDOM(text, member);
@@ -71,13 +69,9 @@ drone.on("close", (event) => {
 });
 
 
-// Indicates an error has occurred with the connection
-// drone.on('error', error => {
-//   console.error(error);
-// });
+///// ------------------------------------------------------------
 
-//////// ------------------------------ RANDOMIZERS 
-
+// RANDOMIZERS
 
 // Function to get random name (15)
 function getRandomName() {
@@ -116,7 +110,7 @@ function getRandomName() {
     "sisymbrium",
   ];
 
-  // Name
+  // Name randomizer
   return (
     adjs[Math.floor(Math.random() * adjs.length)] +
     "_" +
@@ -124,27 +118,25 @@ function getRandomName() {
   );
 }
 
-// Color
+// Function to get random color
 function getRandomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
 }
 
 
-
-/////// ------------------------------------- DOM related
+/////// -------------------------------------__________ DOM related
 
 const DOM = {
-  membersCount: document.querySelector(".members-count"),
-  membersList: document.querySelector(".members-list"),
+  members: document.querySelector(".members"),
   messages: document.querySelector(".messages"),
   input: document.querySelector(".message-form__input"),
   form: document.querySelector(".message-form"),
 };
 
-
 // Event listener for sending messages
 DOM.form.addEventListener("submit", sendMessage);
 
+// Sending message
 function sendMessage() {
   const value = DOM.input.value;
   if (value === "") {
@@ -157,50 +149,60 @@ function sendMessage() {
   });
 }
 
-// Create and adding members
-function createMemberElement(member) {
+// updates who's online
+function updateMembersDOM() {
+  DOM.members.innerHTML = `${members.length} friends in the room: ${members
+    .map((value) => {
+      return `<span style="color: ${value.clientData.color}">${value.clientData.name}</span>`;
+    })
+    .join(", ")}`;
+}
+
+// Creating and adding MESSAGES to the DOM
+// Separate messages from other users and "me"
+
+function createMessageElement(text, member) {
+  // Define "me"
+  const clientID = drone.clientId;
+  const messageFromMe = member.id === clientID;
+
+  // Check if the messages are from "me"
+  const className = messageFromMe ? "message currentMember" : "message";
   const { name, color } = member.clientData;
 
-  const el = document.createElement("div");
-  el.appendChild(document.createTextNode(name));
-  el.className = "member";
-  el.style.color = color;
+  // Creating and adding MSG to DOM
+  const msg = document.createElement("div");
+  msg.className = "message_text";
+  msg.appendChild(document.createTextNode(text));
 
-  return el;
+  //Creating username profile with a name, color, and an icon
+  const profile = document.createElement("div");
+  profile.className = "profile";
+
+  const character = document.createElement("div");
+  character.appendChild(document.createTextNode(name));
+  character.style.color = color;
+  character.className = "name";
+
+  profile.appendChild(character);
+
+  //Combining user profile and message into one element based on whether the message is from you or other participants
+  const element = document.createElement("div");
+  element.appendChild(profile);
+  element.appendChild(msg);
+  element.className = className;
+  return element;
 }
-
-
-// Update who's online
-function updateMembersDOM() {
-  DOM.membersCount.innerText = `${members.length} artists ready to create:`;
-  DOM.membersList.innerHTML = "";
-
-  members.forEach((member) =>
-    DOM.membersList.appendChild(createMemberElement(member))
-  );
-}
-
-
-// Create and add messages
-function createMessageElement(text, member) {
-  const el = document.createElement("div");
-  el.appendChild(createMemberElement(member));
-  el.appendChild(document.createTextNode(text));
-  el.className = "message";
-
-  return el;
-}
-
 
 // Add new messages to chat window
 function addMessageToListDOM(text, member) {
-  const el = DOM.messages;
 
   // auto-scroll to the bottom of the chat when the message is added
-  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
-  el.appendChild(createMessageElement(text, member));
-
+  const element = DOM.messages;
+  const wasTop =
+    element.scrollTop === element.scrollHeight - element.clientHeight;
+  element.appendChild(createMessageElement(text, member));
   if (wasTop) {
-    el.scrollTop = el.scrollHeight - el.clientHeight;
+    element.scrollTop = element.scrollHeight - element.clientHeight;
   }
 }

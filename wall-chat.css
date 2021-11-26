@@ -66,7 +66,7 @@ body {
   background-image:
     linear-gradient(rgba(255,255,255,0.3), 
 rgba(255,255,255,0.3)),
-    url("/visuals/wallpaper-2.png");
+    url("visuals/wallpaper-2.png");
   background-size: 100%;
   background-repeat: initial;
 }
@@ -107,7 +107,7 @@ h1 {
   height:75vh;
   overflow: auto;
 
-  background: url(/visuals/messages-bckg.png);
+  background: url(/visuals/messages-bckg.pngs);
   background-size: cover;
   background-position: top;
 }
@@ -172,4 +172,32 @@ background-color: rgba(255, 255, 255, 0.445);
 
   width: 3em;
   margin: 0.5em 0.5em;
+}
+
+/* TABLET */
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  body {
+      padding: 20px;
+  }
+  h1{
+    font-size: 30px;
+    margin-bottom: 60px;
+  }
+  .welcome_button {
+    margin-top: 120px;
+  }
+  
+}
+/* PHONE */
+@media screen and (max-width: 599px) {
+  body {
+      padding: 5px;
+  }
+  h1{
+    font-size: 20px;
+  }
+  .welcome_button {
+  margin-top: 120px;
+  font-size: 15px;
+}
 }
