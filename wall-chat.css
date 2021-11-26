@@ -55,6 +55,8 @@ table {
   font-family: 'Architects Daughter', cursive;
 }
 
+/* -------------- styling area ---------------- */
+
 body {
   box-sizing: border-box;
   display: flex;
@@ -73,12 +75,14 @@ rgba(255,255,255,0.3)),
 
 h1 { 
   margin: auto;
-  padding: 1em;
+  padding: 0.3em;
 
   font-family: 'Architects Daughter', cursive;
-  font-size: 2em;
-  text-transform: uppercase;
+  font-size: 3em; 
   letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+
   color: rgb(34, 34, 34, 0.8);
  }
 
@@ -91,7 +95,7 @@ h1 {
   background-color: rgba(255, 255, 255, 0.5);
 
   font-family: 'Architects Daughter', cursive;
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 0.1em;
   color: rgb(34, 34, 34, 0.8);
   overflow: auto;
@@ -129,7 +133,10 @@ h1 {
   font-size: 0.85em;
 } 
 .message .member { display: inline-block; }
-.members { line-height: 1em; }
+.members { line-height: 1.3em; }
+.name { text-transform: uppercase; }
+
+span { text-transform: uppercase; }
 
 .member {
   position: relative;
@@ -152,7 +159,7 @@ h1 {
   letter-spacing: 0.1em;
   color: rgb(34, 34, 34, 0.8);
 
-background-color: rgba(255, 255, 255, 0.445);
+  background-color: rgba(255, 255, 255, 0.445);
 }
 
 .message_text {
@@ -174,30 +181,26 @@ background-color: rgba(255, 255, 255, 0.445);
   margin: 0.5em 0.5em;
 }
 
-/* TABLET */
+
+/* -------------- tablet ---------------- */
+
 @media screen and (min-width: 600px) and (max-width: 1023px) {
   body {
-      padding: 20px;
+    padding: 20px;
   }
   h1{
     font-size: 30px;
     margin-bottom: 60px;
   }
-  .welcome_button {
-    margin-top: 120px;
-  }
-  
 }
-/* PHONE */
+
+/* -------------- phone ---------------- */
+
 @media screen and (max-width: 599px) {
   body {
-      padding: 5px;
+    padding: 5px;
   }
   h1{
     font-size: 20px;
   }
-  .welcome_button {
-  margin-top: 120px;
-  font-size: 15px;
-}
 }
