@@ -2,7 +2,7 @@
 
 **Algebra Front-end Developer Course 2021 - final project**
 
-This is a final project for forementioned educational program.
+This is the final project for the forementioned educational program.
 ___
 
 ## Technologies
@@ -11,19 +11,6 @@ ___
 - CSS
 - "vanilla" JavaScript
 - [Scaledrone](https://www.scaledrone.com/)
-
-<br>
-___
-
-## Connect to Scaledrone
-
-You can create your Scaledrone channel for free [here](https://dashboard.scaledrone.com/channels).
-To connect to the channel you need to paste your channel ID in the `wall-chat.js`.
-
-  ```js
-  // Connecting to Scaledrone channel ID
-  const CLIENT_ID = "M4trM8H1WVeEhszi";
-  ```
 
 <br>
 ___
@@ -41,7 +28,20 @@ ___
 <br>
 ___
 
-## Image
+## Connect to Scaledrone
+
+You can create your Scaledrone channel for free [here](https://dashboard.scaledrone.com/channels).
+To connect to the channel you need to paste your channel ID in the `wall-chat.js`.
+
+  ```js
+  // Connecting to Scaledrone channel ID
+  const CLIENT_ID = "M4trM8H1WVeEhszi";
+  ```
+
+<br>
+___
+
+## Images
 
 ![mobile](visuals/wall-chat-mobile.jpg)
 <br>
@@ -53,7 +53,7 @@ ___
 
 ## Try it
 
-Try it by opening in two different windows.
+Try it by opening in two different windows/tabs.
 
 [GitHub Pages](https://github.com/emarekica/seminarski-algebra/settings/pages)
 
