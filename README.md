@@ -2,14 +2,14 @@
 
 **Algebra Front-end Developer Course 2021 - final project**
 
-This is a final project for forementioned education program.
+This is a final project for forementioned educational program.
 ___
 
 ## Technologies
 
 - HTML
 - CSS
-- "Vanilla" JavaScript
+- "vanilla" JavaScript
 - [Scaledrone](https://www.scaledrone.com/)
 
 <br>
@@ -27,6 +27,7 @@ To connect to the channel you need to paste your channel ID in the `wall-chat.js
 
 <br>
 ___
+
 ## Features
 
 - Sends messages with autor name
@@ -35,6 +36,7 @@ ___
 - Connected to Scaledrone
 - Displays active members and notifications who joined
 - Autoexpanding input area with a scrollbar in case of a larger text input
+- Responsive design
 
 <br>
 ___
@@ -49,10 +51,16 @@ ___
 <br>
 ___
 
-## Try it yourself
+## Try it
 
 Try it by opening in two different windows.
 
 [GitHub Pages](https://github.com/emarekica/seminarski-algebra/settings/pages)
+
+___
+
+### Licence 
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
