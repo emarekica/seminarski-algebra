@@ -13,6 +13,7 @@ ___
 - [Scaledrone](https://www.scaledrone.com/)
 
 <br>
+
 ___
 
 ## Features
@@ -26,6 +27,7 @@ ___
 - Responsive design
 
 <br>
+
 ___
 
 ## Connect to Scaledrone
@@ -39,6 +41,7 @@ To connect to the channel you need to paste your channel ID in the `wall-chat.js
   ```
 
 <br>
+
 ___
 
 ## Images
