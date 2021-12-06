@@ -56,7 +56,7 @@ ___
 
 ## Try it
 
-Try it by opening in two different windows/tabs.
+Open the chat in two or more different windows/tabs.
 
 [GitHub Pages](https://github.com/emarekica/seminarski-algebra/settings/pages)
 
