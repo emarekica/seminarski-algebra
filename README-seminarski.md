@@ -46,12 +46,9 @@ ___
 
 ## Images
 
-![mobile](visuals/wall-chat-mobile.jpg)
+![mockups](visuals/wall-chat-mockups.jpg)
 <br>
-![tablet](visuals/wall-chat-tablet.jpg)
-<br>
-![desktop](visuals/wall-chat-desktop.jpg)
-<br>
+
 ___
 
 ## Try it
