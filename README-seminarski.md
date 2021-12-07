@@ -46,7 +46,13 @@ ___
 
 ## Images
 
-![mockups](visuals/wall-chat-mockups.jpg)
+![mockups](visuals/wall-chat-mobile.jpg)
+<br>
+
+![tablet](visuals/wall-chat-tablet.jpg)
+<br>
+
+![desktop](visuals/wall-chat-desktop.jpg)
 <br>
 
 ___
