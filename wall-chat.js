@@ -62,12 +62,10 @@ drone.on("open", (error) => {
   });
 });
 
-
 // Closing connection to Scaledrone
 drone.on("close", (event) => {
   console.log("Connection was closed", event);
 });
-
 
 ///// ------------------------------------------------------------
 
@@ -123,14 +121,13 @@ function getRandomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
 }
 
-
 /////// -------------------------------------__________ DOM related
 
 const DOM = {
   members: document.querySelector(".members"),
   messages: document.querySelector(".messages"),
-  input: document.querySelector(".message-form__input"),
-  form: document.querySelector(".message-form"),
+  input: document.querySelector(".messageFormInput"),
+  form: document.querySelector(".messageForm"),
 };
 
 // Event listener for sending messages
@@ -172,7 +169,7 @@ function createMessageElement(text, member) {
 
   // Creating and adding MSG to DOM
   const msg = document.createElement("div");
-  msg.className = "message_text";
+  msg.className = "messageText";
   msg.appendChild(document.createTextNode(text));
 
   //Creating username profile with a name, color, and an icon
@@ -196,7 +193,6 @@ function createMessageElement(text, member) {
 
 // Add new messages to chat window
 function addMessageToListDOM(text, member) {
-
   // auto-scroll to the bottom of the chat when the message is added
   const element = DOM.messages;
   const wasTop =

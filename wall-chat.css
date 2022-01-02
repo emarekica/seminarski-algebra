@@ -3,56 +3,139 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-* { 
-  font-family: 'Architects Daughter', cursive;
+* {
+  font-family: "Architects Daughter", cursive;
 }
 
 /* -------------- styling area ---------------- */
@@ -65,26 +148,27 @@ body {
   margin: 0;
   padding: 2em;
 
-  background-image:
-    linear-gradient(rgba(255,255,255,0.3), 
-rgba(255,255,255,0.3)),
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
     url("visuals/wallpaper.png");
   background-size: 100%;
   background-repeat: initial;
 }
 
-h1 { 
+h1 {
   margin: auto;
   padding: 0.5em;
 
-  font-family: 'Architects Daughter', cursive;
-  font-size: 3em; 
+  font-family: "Architects Daughter", cursive;
+  font-size: 3em;
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
 
   color: rgb(34, 34, 34, 0.8);
- }
+}
 
 .members,
 .messages {
@@ -94,21 +178,21 @@ h1 {
 
   background-color: rgba(255, 255, 255, 0.5);
 
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
   font-size: 1em;
   letter-spacing: 0.1em;
   color: rgb(34, 34, 34, 0.8);
   overflow: auto;
 }
 
-.messages { 
+.messages {
   display: block;
   clear: both;
   float: left;
   position: relative;
 
   flex-shrink: 1;
-  height:75vh;
+  height: 75vh;
   overflow: auto;
 
   background: url(/visuals/messages-bckg.pngs);
@@ -120,23 +204,31 @@ h1 {
   float: right !important;
 }
 
-.message { 
+.message {
   display: block;
   float: left;
   clear: both;
   position: relative;
 
-  padding: 5px 0; 
-  margin: 5px 5px 0 0 ;
+  padding: 5px 0;
+  margin: 5px 5px 0 0;
   max-width: 50vw;
 
   font-size: 0.85em;
-} 
-.message .member { display: inline-block; }
-.members { line-height: 1.3em; }
-.name { text-transform: uppercase; }
+}
+.message .member {
+  display: inline-block;
+}
+.members {
+  line-height: 1.3em;
+}
+.name {
+  text-transform: uppercase;
+}
 
-span { text-transform: uppercase; }
+span {
+  text-transform: uppercase;
+}
 
 .member {
   position: relative;
@@ -145,12 +237,12 @@ span { text-transform: uppercase; }
   padding-right: 2em;
 }
 
-.message-form {
+.messageForm {
   display: flex;
   word-wrap: break-word;
 }
 
-.message-form__input {
+.messageFormInput {
   flex-grow: 1;
   border: none;
   padding: 10px 15px;
@@ -162,58 +254,73 @@ span { text-transform: uppercase; }
   background-color: rgba(255, 255, 255, 0.445);
 }
 
-.message_text {
+.messageText {
   margin-top: 10px;
   font-size: 1.8em;
 }
 
-.message-form__button {
-  margin: auto; 
+.messageFormButton {
+  margin: auto;
   border: none;
 
   background-color: rgba(255, 255, 255, 0.445);
 }
 
-.name { margin-top: 1.5em; }
+.name {
+  margin-top: 1.5em;
+}
 
-#brushstroke {
+#brushStroke {
   position: relative;
 
   width: 3em;
   margin: 0.5em 0.5em;
 }
 
-
 /* -------------- tablet ---------------- */
 
 @media screen and (min-width: 600px) and (max-width: 1023px) {
-
-  body { padding: 20px; }
+  body {
+    padding: 20px;
+  }
 
   h1 {
     font-size: 2.5em;
     margin: 0.5em 0 0.5em 0;
   }
 
-  .messages { height: 60vh; }
-  .message_text { font-size: 1.4em; } 
+  .messages {
+    height: 60vh;
+  }
+  .message_text {
+    font-size: 1.4em;
+  }
 
-  #brushstroke { width: 2.5em; }
+  #brushstroke {
+    width: 2.5em;
+  }
 }
 
 /* -------------- phone ---------------- */
 
 @media screen and (max-width: 599px) {
-
-  body { padding: 5px; }
+  body {
+    padding: 5px;
+  }
 
   h1 {
     font-size: 2em;
     margin: 0.5em 0 0.5em 0;
   }
 
-  .messages { height: 70vh; }
-  .message_text { font-size: 1.4em; } 
+  .messages {
+    height: 70vh;
+  }
+  .message_text {
+    font-size: 1.4em;
+  }
 
-  #brushstroke { width: 2.5em; }
+  #brushstroke {
+    width: 2.5em;
+  }
 }

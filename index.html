@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
     <script
       type="text/javascript"
-      src="https://cdn.scaledrone.com/scaledrone.min.js">
-    </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="wall-chat.css">
+      src="https://cdn.scaledrone.com/scaledrone.min.js"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="wall-chat.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Wall writings</title>
   </head>
@@ -20,29 +23,29 @@
   <body>
     <h1>Wall writings</h1>
 
-    <div class="members">-</div>
+    <div class="members"></div>
     <div class="messages"></div>
 
-    <form class="message-form" onsubmit="return false;">
-
+    <form class="messageForm" onsubmit="return false;">
       <input
-        class="message-form__input"
+        class="messageFormInput"
         id="input-field"
         placeholder="Write something..."
-        type="text" />
+        type="text"
+      />
 
       <button
-        class="message-form__button"
-        id="send-button"
+        class="messageFormButton"
+        id="sendButton"
         type="submit"
-        value="send">
-
+        value="send"
+      >
         <img
-          src="visuals/brushstroke.png" 
+          src="visuals/brushstroke.png"
           alt="White wall with wide gray brush strokes"
-          id="brushstroke" />
+          id="brushStroke"
+        />
       </button>
-
     </form>
 
     <script src="wall-chat.js"></script>
