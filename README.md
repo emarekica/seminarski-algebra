@@ -30,6 +30,14 @@ ___
 
 ___
 
+## Impovement ideas
+
+[] limit number of characters in the form input field
+[] add modal window when error while connecting
+[] add date & time with every sent message
+
+___
+
 ## Connect to Scaledrone
 
 You can create your Scaledrone channel for free [here](https://dashboard.scaledrone.com/channels).
