@@ -67,9 +67,7 @@ drone.on("close", (event) => {
   console.log("Connection was closed", event);
 });
 
-///// ------------------------------------------------------------
-
-// RANDOMIZERS
+//// ----------------------------- RANDOMIZERS
 
 // Function to get random name (15)
 function getRandomName() {
@@ -116,12 +114,12 @@ function getRandomName() {
   );
 }
 
-// Function to get random color
+// Color randomizer
 function getRandomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
 }
 
-/////// -------------------------------------__________ DOM related
+//// ----------------------------- DOM related
 
 const DOM = {
   members: document.querySelector(".members"),
@@ -146,7 +144,7 @@ function sendMessage() {
   });
 }
 
-// updates who's online
+// Updates who's online
 function updateMembersDOM() {
   DOM.members.innerHTML = `${members.length} artists at the wall: ${members
     .map((value) => {
