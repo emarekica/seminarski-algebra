@@ -30,6 +30,14 @@ ___
 
 ___
 
+## Impovement ideas
+
+- [] limit number of characters in the form input field
+- [] add modal window when error while connecting
+- [] add date & time with every sent message
+
+___
+
 ## Connect to Scaledrone
 
 You can create your Scaledrone channel for free [here](https://dashboard.scaledrone.com/channels).
@@ -37,7 +45,7 @@ To connect to the channel you need to paste your channel ID in the `wall-chat.js
 
   ```js
   // Connecting to Scaledrone channel ID
-  const CLIENT_ID = "M4trM8H1WVeEhszi";
+  const CLIENT_ID = "M5tfM9H0WVkEzsTi";
   ```
 
 <br>
