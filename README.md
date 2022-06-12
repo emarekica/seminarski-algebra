@@ -32,9 +32,10 @@ ___
 
 ## Impovement ideas
 
-- [] limit number of characters in the form input field
-- [] add modal window when error while connecting
-- [] add date & time with every sent message
+- [x] limit number of characters in the form input field + alert message
+- [x] add modal window when error while connecting
+- [x] add date & time with every message sent
+- [ ] add small modal window with alert when character limit reached
 
 ___
 
