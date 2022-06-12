@@ -17,9 +17,17 @@ let members = [];
 
 //// ----------------------------- OPENING CONNECTION
 
+//
+
+const modal = document.querySelector(".modal");
+
 // A connection has been opened, if no errors
 drone.on("open", (error) => {
   if (error) {
+    modal.classList.add("open");
+    modal.textContent =
+      "An error has occured while connecting to the service. Please, try again.";
+
     return console.error(error);
   }
   console.log("Successfully connected to Scaledrone");
@@ -62,10 +70,23 @@ drone.on("open", (error) => {
   });
 });
 
+//
+
+// closing error message modal window
+modal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal")) {
+    modal.classList.remove("open");
+  }
+});
+
+//
+
 // Closing connection to Scaledrone
 drone.on("close", (event) => {
   console.log("Connection was closed", event);
 });
+
+//
 
 //// ----------------------------- RANDOMIZERS
 
@@ -131,12 +152,17 @@ const DOM = {
 // Event listener for sending messages
 DOM.form.addEventListener("submit", sendMessage);
 
+// Adding date & time to messages
+
 // Sending message
 function sendMessage() {
   const value = DOM.input.value;
+  // console.log(value);
+
   if (value === "") {
     return;
   }
+
   DOM.input.value = "";
   drone.publish({
     room: "observable-room",
@@ -170,7 +196,7 @@ function createMessageElement(text, member) {
   msg.className = "messageText";
   msg.appendChild(document.createTextNode(text));
 
-  //Creating username profile with a name, color, and an icon
+  // Creating username profile with a name, color, and an icon
   const profile = document.createElement("div");
   profile.className = "profile";
 
@@ -181,11 +207,35 @@ function createMessageElement(text, member) {
 
   profile.appendChild(character);
 
+  // Add date & time to the msg
+  // const msgElement = DOM.messages;
+
+  const now = new Date();
+  const time = `${now.getHours()}:${now.getMinutes()}`.padStart(2, "0");
+  const date = new Intl.DateTimeFormat(navigator.language).format(now);
+
+  // push date + time values to msg
+  // 1. create a new element that will be above the message input value
+  // 2. add content `${time}, ${date}`
+  // 3. add class so you can style it
+  // 4. append it to the DOM together with the MSG
+  const msgDateTime = document.createElement("div");
+
+  msgDateTime.textContent = `${date}, ${time}`;
+  msgDateTime.classList.add("time-date");
+  // console.log(msgDateTime.textContent);
+
+  // msgElement.prepend(msgDateTime);
+
   //Combining user profile and message into one element based on whether the message is from you or other participants
+  // addDateTime() here!!!
+
   const element = document.createElement("div");
   element.appendChild(profile);
   element.appendChild(msg);
-  element.className = className;
+  element.className = className; // check
+  element.append(msgDateTime);
+
   return element;
 }
 
@@ -200,3 +250,18 @@ function addMessageToListDOM(text, member) {
     element.scrollTop = element.scrollHeight - element.clientHeight;
   }
 }
+
+// Alert if message maxlength reached
+
+const input = DOM.input;
+
+input.addEventListener("keydown", function () {
+  if (this.value.length >= 500) {
+    input.style.border = "solid";
+    input.style.borderColor = "#ba0000cc";
+    input.style.borderRadius = "5px";
+    alert("You have reached a limit of 500 characters");
+  }
+});
+
+// instead of "alert", add small modal
