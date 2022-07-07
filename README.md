@@ -1,6 +1,6 @@
 # CHAT APP
 
-**Algebra Front-end Developer Course 2021**
+**Algebra Front-end Developer Course 2021 - final project**
 
 This is the final project for the forementioned educational program.
 
