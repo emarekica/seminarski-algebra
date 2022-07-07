@@ -256,7 +256,7 @@ function addMessageToListDOM(text, member) {
 const input = DOM.input;
 
 input.addEventListener("keydown", function () {
-  if (this.value.length >= 5) {
+  if (this.value.length >= 500) {
     // input.style.border = "solid";
     // input.style.borderColor = "#ba0000cc";
     // input.style.borderRadius = "5px";
@@ -266,5 +266,3 @@ input.addEventListener("keydown", function () {
     modalError.textContent = "You have exceeded the maximum message length.";
   }
 });
-
-//  return char length to 500
