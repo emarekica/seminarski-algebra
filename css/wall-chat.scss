@@ -1,3 +1,8 @@
+@import "components/variables";
+@import "components/mixins";
+
+/* ----------------------------- */
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -136,7 +141,7 @@ table {
 }
 
 * {
-  font-family: "Architects Daughter", cursive;
+  font-family: $font-family;
 }
 
 /* -------------- general ---------------- */
@@ -145,15 +150,12 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: baseline;
   margin: 0;
   padding: 2em;
 
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
-    ),
-    url("visuals/wallpaper.png");
+  background-image: $linear-gradient, url("../visuals/wallpaper.png");
   background-size: 100%;
   background-repeat: initial;
 }
@@ -162,13 +164,13 @@ h1 {
   margin: auto;
   padding: 0.5em;
 
-  font-family: "Architects Daughter", cursive;
+  font-family: $font-family;
   font-size: 3em;
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
 
-  color: rgb(34, 34, 34, 0.8);
+  color: $font-color;
 }
 
 .members,
@@ -177,23 +179,22 @@ h1 {
   padding: 15px;
   margin-bottom: 15;
 
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: $background-color;
 
-  font-family: "Architects Daughter", cursive;
+  font-family: $font-family;
   font-size: 1em;
   letter-spacing: 0.1em;
-  color: rgb(34, 34, 34, 0.8);
+  color: $font-color;
   overflow: auto;
 }
 
 .messages {
-  display: block;
   clear: both;
   float: left;
   position: relative;
 
   flex-shrink: 1;
-  height: 75vh;
+  height: 60vh;
   overflow: auto;
 
   background: url(/visuals/messages-bckg.png);
@@ -203,6 +204,10 @@ h1 {
 
 .currentMember {
   float: right !important;
+}
+
+.message .member {
+  display: inline-block;
 }
 
 .message {
@@ -217,16 +222,11 @@ h1 {
 
   font-size: 0.85em;
 }
-.message .member {
-  display: inline-block;
-}
+
 .members {
   line-height: 1.3em;
 }
-.name {
-  text-transform: uppercase;
-}
-
+.name,
 span {
   text-transform: uppercase;
 }
@@ -250,13 +250,13 @@ span {
 
   font-size: 16px;
   letter-spacing: 0.1em;
-  color: rgb(34, 34, 34, 0.8);
+  color: $font-color;
 
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: $background-color;
 }
 
 .messageFormInput:focus {
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: $background-color;
 
   /* removes the border */
   outline: none;
@@ -272,7 +272,7 @@ span {
   margin: auto;
   border: none;
 
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: $background-color;
 }
 
 .name {
@@ -340,7 +340,7 @@ span {
 
   color: #ba0000cc;
   border-radius: 5px;
-  font-family: "Architects Daughter", cursive;
+  font-family: $font-family;
   font-size: 1.1em;
   font-weight: 100;
   line-height: 1.4em;
@@ -365,21 +365,12 @@ span {
     padding: 20px;
   }
 
-  h1 {
-    font-size: 2.5em;
-    margin: 0.5em 0 0.5em 0;
-  }
-
   .messages {
     height: 60vh;
   }
-  .message_text {
-    font-size: 1.4em;
-  }
 
-  #brushstroke {
-    width: 2.5em;
-  }
+  // mixin
+  @include mediaquerymix;
 }
 
 /* -------------- phone ---------------- */
@@ -389,19 +380,9 @@ span {
     padding: 5px;
   }
 
-  h1 {
-    font-size: 2em;
-    margin: 0.5em 0 0.5em 0;
-  }
-
   .messages {
     height: 70vh;
   }
-  .message_text {
-    font-size: 1.4em;
-  }
 
-  #brushstroke {
-    width: 2.5em;
-  }
+  @include mediaquerymix;
 }
