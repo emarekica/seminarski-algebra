@@ -56,7 +56,7 @@ This is the final project for the forementioned educational program.
 - [x] add date & time with every message sent
 - [x] add small modal window with alert when character limit reached
 - [x] add SCSS
-- [ ] make version with Webpack
+- [x] make [version with Webpack](https://github.com/emarekica/chat-modularJS-webpack)
 
 <br><br>
 
