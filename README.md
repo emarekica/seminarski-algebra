@@ -74,7 +74,7 @@ To connect to the channel you need to paste your channel ID in the `wall-chat.js
 
 ```js
 // Connecting to Scaledrone channel ID
-const CLIENT_ID = "M5tfM9H0WVkEzsTi";
+const CLIENT_ID = "j34oer0909w8uhi3uhtie";
 ```
 
 <br><br>
